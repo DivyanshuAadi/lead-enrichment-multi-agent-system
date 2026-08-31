@@ -1,0 +1,22 @@
+{
+  "mcpServers": {
+    "facebook-ads-library": {
+      "command": "python",
+      "args": ["-m", "mcp_server_facebook_ads"],
+      "env": {
+        "META_ADS_TOKEN": "${META_ADS_TOKEN:-mock_mode}"
+      },
+      "description": "Meta Ads Library search and creative analysis tool"
+    },
+    "agent-reach": {
+      "command": "python",
+      "args": ["-m", "mcp_server_agent_reach"],
+      "description": "Omni-channel social footprint and outreach verification"
+    },
+    "playwright-browser": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-puppeteer"],
+      "description": "Headless browser auditing for LCP and CAPI tags"
+    }
+  }
+}

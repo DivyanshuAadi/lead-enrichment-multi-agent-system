@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "description": "Configurable Model Routing Matrix. Assign high-reasoning flagship models for CEO / Code Synthesis and lightweight fast models for Subagents to maximize speed and minimize token costs.",
+  "active_preset": "balanced",
+  "presets": {
+    "balanced": {
+      "provider": "anthropic",
+      "ceo_orchestrator": "claude-3-7-sonnet-20250219",
+      "dynamic_code_generator": "claude-3-7-sonnet-20250219",
+      "stream1_creative_research_subagent": "claude-3-5-haiku-20241022",
+      "stream2_vision_browser_subagent": "claude-3-5-haiku-20241022",
+      "stage3_qualification_subagent": "claude-3-5-haiku-20241022",
+      "stage4_nepq_sales_hook_subagent": "claude-3-7-sonnet-20250219"
+    },
+    "max_cost_savings": {
+      "provider": "anthropic",
+      "ceo_orchestrator": "claude-3-5-haiku-20241022",
+      "dynamic_code_generator": "claude-3-5-haiku-20241022",
+      "stream1_creative_research_subagent": "claude-3-5-haiku-20241022",
+      "stream2_vision_browser_subagent": "claude-3-5-haiku-20241022",
+      "stage3_qualification_subagent": "claude-3-5-haiku-20241022",
+      "stage4_nepq_sales_hook_subagent": "claude-3-5-haiku-20241022"
+    },
+    "openai_preset": {
+      "provider": "openai",
+      "ceo_orchestrator": "gpt-4o",
+      "dynamic_code_generator": "gpt-4o",
+      "stream1_creative_research_subagent": "gpt-4o-mini",
+      "stream2_vision_browser_subagent": "gpt-4o-mini",
+      "stage3_qualification_subagent": "gpt-4o-mini",
+      "stage4_nepq_sales_hook_subagent": "gpt-4o"
+    },
+    "deepseek_preset": {
+      "provider": "deepseek",
+      "ceo_orchestrator": "deepseek-reasoner",
+      "dynamic_code_generator": "deepseek-chat",
+      "stream1_creative_research_subagent": "deepseek-chat",
+      "stream2_vision_browser_subagent": "deepseek-chat",
+      "stage3_qualification_subagent": "deepseek-chat",
+      "stage4_nepq_sales_hook_subagent": "deepseek-chat"
+    },
+    "antigravity_preset": {
+      "ceo_model": "inherit",
+      "code_generator_model": "inherit",
+      "subagents_model": "flash"
+    }
+  }
+}

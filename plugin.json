@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "name": "lead-enrichment-multi-agent-system",
+  "version": "2.0.0",
+  "displayName": "Lead Qualification & Enrichment Multi-Agent Plugin",
+  "description": "Universal portable multi-agent plugin for Claude Code, Antigravity, Copilot, Codex, and DeepSeek Harness. Ingests raw Meta Ads CSV, deduplicates advertisers, dynamically shards workload across Manager Pods with Semaphore(4) throttling, executes parallel research and headless vision/CAPI audits via MCP tools, qualifies leads against user-provided Qualification.md, and synthesizes 4-part Jeremy Miner NEPQ cold call battlecards into Clean_Enriched_Leads.csv.",
+  "author": "Autonomous Agency Architect",
+  "license": "MIT",
+  "entrypoints": {
+    "claude_code": "CLAUDE.md",
+    "antigravity": "SKILL.md",
+    "copilot_codex": "AGENTS.md",
+    "deepseek_harness": "AGENTS.md",
+    "ruflo": ".ruflo/ruflo.json",
+    "cli_runner": "run_pipeline.py"
+  },
+  "mcp_servers": {
+    "facebook-ads-library": {
+      "description": "Live Facebook Meta Ads Library verification and competitor intelligence",
+      "tools": [
+        "search_facebook_ads",
+        "analyze_ad_creative_elements",
+        "analyze_ad_performance_metrics",
+        "competitive_ad_analysis"
+      ],
+      "optional": true
+    },
+    "agent-reach": {
+      "description": "Social media channel verification and multi-touchpoint reachability checks",
+      "tools": ["get_status", "verify_reachability"],
+      "optional": true
+    },
+    "playwright": {
+      "description": "Headless browser audits for Core Web Vitals (LCP/FID/CLS) and Meta Pixel/CAPI telemetry",
+      "tools": ["navigate", "screenshot", "evaluate_script"],
+      "optional": true
+    }
+  },
+  "inputs": {
+    "raw_csv": "RAW.csv or sample_meta_ads.csv (Meta Ads Library raw multi-row export)",
+    "qualification_spec": "Qualification.md (User-defined qualification criteria, thresholds & NEPQ directives)"
+  },
+  "outputs": {
+    "master_csv": "Clean_Enriched_Leads.csv (Excel utf-8-sig BOM encoded)",
+    "briefing": "Top Tier A Hot Leads Summary with instant Jeremy Miner NEPQ Call Openers"
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "project": "Lead Enrichment Multi-Agent System",
+  "version": "1.0.0",
+  "plugins": ["agency-agents"],
+  "agency_agents_repo": "https://github.com/msitarzewski/agency-agents",
+  "supervisor": {
+    "role": "engineering-multi-agent-systems-architect",
+    "concurrency_limit": 4,
+    "error_isolation": true
+  },
+  "pipeline": {
+    "stage_1_deduplication": {
+      "cluster_by": ["page_id", "canonical_domain"],
+      "output_format": "canonical_business_json"
+    },
+    "stage_2_parallel_investigation": {
+      "stream_1_research": [
+        "paid-media-creative-strategist",
+        "paid-media-auditor",
+        "paid-media-paid-social-strategist",
+        "marketing-instagram-curator"
+      ],
+      "stream_2_vision": [
+        "design-persona-walkthrough",
+        "engineering-wordpress-performance",
+        "paid-media-tracking-specialist"
+      ]
+    },
+    "stage_3_qualification": {
+      "spec_file": "Qualification.md",
+      "agent": "sales-deal-strategist",
+      "score_range": [0, 100],
+      "tiers": {
+        "Tier A (Hot)": 80,
+        "Tier B (Warm)": 60,
+        "Tier C (Unqualified)": 0
+      }
+    },
+    "stage_4_nepq_sales_hook": {
+      "condition": "tier in ['Tier A (Hot)', 'Tier B (Warm)']",
+      "agents": [
+        "sales-discovery-coach",
+        "sales-outbound-strategist",
+        "sales-offer-lead-gen"
+      ],
+      "framework": "Jeremy Miner NEPQ (4-Part Hook + 3-Step Objection Loops)"
+    },
+    "stage_5_compilation_and_dispatch": {
+      "output_csv": "Clean_Enriched_Leads.csv",
+      "encoding": "utf-8-sig",
+      "sort_by": "qualification_score",
+      "ascending": false
+    }
+  }
+}
